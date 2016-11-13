@@ -1,1 +1,22 @@
-Inovatis Project With Chatty System And Calendar
+# --------------------------------------
+	Inovatis Project With Chatty System And Calendar
+# --------------------------------------
+
+#Commands : 
+
+#bundle install ( if error gem install bundler) 
+
+#rake db:migrate 
+
+#rake db:seed 
+
+#rails server 
+
+
+#go to localhost:3000 to see the project
+
+
+#admin account = (email =>  "inovatis@example.com" , password => "123456789")
+
+
+
