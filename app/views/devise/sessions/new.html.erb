@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <legend>Se connecter</legend>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div  class="form-group"><%= f.label "Mot de Passe" %>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %></div>
+
+        <div class="checkbox">
+          <% if devise_mapping.rememberable? -%>
+              <label>
+                <%= f.check_box :remember_me %> Se souvenir
+              </label>
+
+          <% end -%>
+        </div>
+
+        <div><%= f.submit "Se connecter", class: "btn btn-primary" %></div>
+    <% end %>
+    <hr>
+    <%= render "devise/shared/links" %>
+    <br><br>
+
+  </div>
+</div>

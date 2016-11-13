@@ -1,0 +1,23 @@
+
+<div>
+	 <%= form_for(resource, as: resource_name, url: '/create' , :remote => true) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, autofocus: true, class: "form-control" %></div>
+
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: "form-control" %></div>
+
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %></div>
+
+    	  <%= f.submit "Enregistrer", class: "btn btn-success" %></div>
+    	  <%= button_tag "Annuler", class: "btn btn-success" %>
+
+    <% end %>
+
+</div>

@@ -1,0 +1,21 @@
+<div class="col-md-10">
+
+
+				<%= month_calendar events: @tasks do |date, tasks| %>
+				<%= date.strftime("%d/%m/%Y") %>
+					<% tasks.each do |task| %>
+						<div>
+							<%= task.name %> assigné à 
+							<% task.users.each do |user| %>
+							<%= user.name %>
+							<% end %>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="col-md-2">
+				<a href="/tasks/new" class="btn btn-primary btn-lg" data-remote=true id="new"><span class="glyphicon glyphicon-plus">
+				</span> Nouvelle Tache</a>
+				<div id="task-form"></div>
+			</div>
+			<hr>

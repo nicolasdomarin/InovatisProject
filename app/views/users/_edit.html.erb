@@ -1,0 +1,4 @@
+<%= form_tag("/users/edit", method: 'get', remote: true ) do |f|%>
+  <%= render :partial => "form" %>
+  <div><%= f.submit "Editer" %></div>
+<% end %>

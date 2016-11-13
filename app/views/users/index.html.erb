@@ -1,0 +1,42 @@
+<div class="row">
+
+<% if current_user.is_admin? %>
+
+	   <span id ="task-button"><h1>Taches v </h1>
+	   </b></span>
+
+		<div id="calendar-div">
+			
+			<%= render :partial => 'tasks/calendar' %>
+
+		</div>
+
+<% end %>
+<div class="col-md-4" style="padding-top:15px;">
+<h1>Discussions</h1>
+
+<div style="height: 300px; overflow-y: auto;" id="discussion">
+<%= render :partial => "index" %>
+</div>
+<hr>
+<h3>Vos Conversations En Cours</h3>
+<div style="height: 400px; overflow-y: auto;" id="pending-conversation">
+  <%= render 'users/pending_conversation' %>
+</div>
+</div>
+
+<div class="col-md-8" id="container-ajax">
+
+</div>
+
+<script>
+$("#task-button").click(function() {
+$('#calendar-div').toggle();
+$('#calendar-div').animate({
+  scrollTop: 1000
+}, 2000);
+})
+
+</script>
+
+</div>

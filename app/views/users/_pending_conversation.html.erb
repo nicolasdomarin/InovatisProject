@@ -1,0 +1,26 @@
+<script src="/assets/chat.js" data-turbolinks-track="true"></script>
+<script src="/assets/users.js" data-turbolinks-track="true"></script>
+
+
+  <% if @conversations.any? %>
+      <ul class="media-list">
+        <% @conversations.each do |conversation| %>
+          <% unless conversation.messages.last.nil? %>
+
+             <li class="media">
+              <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
+              <div class="media-body">
+                <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %> 
+                    <h4 class="media-heading">
+                    Avec <%= conversation_interlocutor(conversation).name.blank? ? "John Doe" : conversation_interlocutor(conversation).name %>
+                      
+                    </h4>
+                    <p> <%= truncate(conversation.messages.last.body, length: 45) %></p>
+              </div>
+            </li>
+        <% end %>
+        <% end %>
+      </ul>
+  <% else %>
+      <p>You have no conversations. Click send message with any user to create one.</p>
+  <% end %>
