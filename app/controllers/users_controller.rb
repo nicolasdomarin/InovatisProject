@@ -30,10 +30,29 @@ class UsersController < ApplicationController
    render :search
   end
 
+
+ def edit 
+  user = User.find(params[:id])
+  render :edit , :locals => { :user => user }
+ end
+
+ def update 
+   user = User.find(params[:id])
+   user.update_attributes(user_params)
+   list
+ end
+
+
   def create 
     #TODO VERIFICATION### 
     
     user = User.new(user_params)
+     if params[:admin] 
+      user.admin = true
+     end
+    
+
+
     if !user.save 
       render :errors , :locals => { :user => user}
     else 
@@ -47,7 +66,7 @@ class UsersController < ApplicationController
       destroy_user(User.find(params[:destroy_user]))    
     end 
 
-    @resellers  = User.where.not("id = ?",current_user.id).where("reseller = ?",true).order("created_at DESC")
+    @resellers  = User.where.not("id = ?",current_user.id).where("reseller = ? AND admin = ?",true,false).order("created_at DESC")
     @admins = User.where.not("id = ?",current_user.id).where("admin = ?",true).order("created_at DESC")
 
     unless params[:search_admin].blank?

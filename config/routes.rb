@@ -24,8 +24,7 @@ Rails.application.routes.draw do
   post '/create' =>'users#create'
   get '/accueil' =>'users#accueil'
   post '/tasks/create' => 'tasks#create'
-  post '/tasks/create' => 'tasks#create'
-  
-  mount Maktoub::Engine => '/'
+  get'/edit/:id' => 'users#edit'
+  post '/update/:id' => 'users#update'
 
 end

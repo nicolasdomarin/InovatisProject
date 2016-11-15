@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   def get_data
     @title = "Inovatis"
+    @users = User.where('admin = ?',true).order("created_at DESC")
   end
 
   protected
