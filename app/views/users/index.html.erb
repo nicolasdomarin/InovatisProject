@@ -1,42 +1,64 @@
-<div class="row">
+
+
+<div class="col-md-4" style="" >
+	<div class="col-md-12" style="padding-top:15px;">
+	 <h1 class="page-header">Discussions</h1>
+
+	<div style="overflow-y: auto;" id="discussion">
+		<%= render :partial => "index" %>
+	</div>
+	<hr>
+	<h3>Vos Conversations En Cours</h3>
+	<div style="overflow-y: auto;" id="pending-conversation">
+	  <%= render 'users/pending_conversation' %>
+	</div>
+	</div>
+
+
+</div>
 
 <% if current_user.is_admin? %>
+	<div class="col-md-8" style="padding-top:15px;" >
+		 <h1 class="page-header">Taches</h1>
+		<div class="col-md-2">
+	  	
 
-	   <span id ="task-button"><h1>Taches v </h1>
-	   </b></span>
-
-		<div id="calendar-div">
-			
-			<%= render :partial => 'tasks/calendar' %>
-
+	   			<div>
+	   				<button id="toggleTask" class="btn btn-lg btn-primary">
+	   				<span class="glyphicon glyphicon-eye-open"></span>Cacher
+	   				</button><br><br>
+                
+				</div>
+				<br>
+				<div id="task-new">
+			  			<a href="#" class="btn btn-primary btn-lg" data-remote=true id="new" data-toggle="modal" data-target="#myModal">
+			  				<span class="glyphicon glyphicon-plus"></span> Nouvelle Tache
+			  			</a>
+						<div id="task-form"></div>
+		
+				</div>
+	
 		</div>
-
+ 		<div class="col-md-10">
+			<div id="calendar-div">
+				<%= render :partial => 'tasks/calendar' %>
+			</div>
+		</div>
+	</div>
 <% end %>
-<div class="col-md-4" style="padding-top:15px;">
-<h1>Discussions</h1>
 
-<div style="height: 300px; overflow-y: auto;" id="discussion">
-<%= render :partial => "index" %>
-</div>
-<hr>
-<h3>Vos Conversations En Cours</h3>
-<div style="height: 400px; overflow-y: auto;" id="pending-conversation">
-  <%= render 'users/pending_conversation' %>
-</div>
-</div>
 
-<div class="col-md-8" id="container-ajax">
 
-</div>
+
 
 <script>
-$("#task-button").click(function() {
-$('#calendar-div').toggle();
-$('#calendar-div').animate({
-  scrollTop: 1000
-}, 2000);
-})
+   
+   $("#toggleTask").click(function(){
+   	$('#slider').toggleClass('closed');
+   	changeName(this);
+   	$("#task-new").toggle();
+   })  
+
+	
 
 </script>
-
-</div>

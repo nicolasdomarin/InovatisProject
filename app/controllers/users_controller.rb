@@ -63,12 +63,6 @@ class UsersController < ApplicationController
   end
 
 
-  
-  def edit 
-
-  end
-
-
   def update_observation 
     @conversations = Conversation.involving(current_user).order("created_at DESC")
     render :partial => 'pending_conversation' 

@@ -23,11 +23,15 @@
 
 <body>
 
+<%= render :partial => '/users/all_modals'%>
+  
+
+
 
 
 <%= render 'layouts/nav' %>
 
-<div class="container">
+<div>
   <% if alert %>
       <div class="alert alert-danger" role="alert"><%= alert %></div>
   <% end %>
@@ -36,6 +40,7 @@
   <% end %>
 
 
+<div id="container-ajax"></div>
   <%= yield %>
 </div>
 <audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>

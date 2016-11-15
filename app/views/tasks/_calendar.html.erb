@@ -1,21 +1,63 @@
-<div class="col-md-10">
-
-
-				<%= month_calendar events: @tasks do |date, tasks| %>
-				<%= date.strftime("%d/%m/%Y") %>
+      	
+        <div id="slider">
+			
+		
+		 <%= month_calendar events: @tasks do |date, tasks| %>
+			<b>	<%= date.strftime("%d/%m/%Y") %></b>
 					<% tasks.each do |task| %>
-						<div>
-							<%= task.name %> assigné à 
+						<div style="border:1px solid;text-align:center;margin-top:10px;min-height:100px;max-height:100px;" onmouseover="display_all_info(this);" onmouseout="hide_all_info(this);" onclick="edit_task();">
+							<b style="text-align:center;min-height:5px;">
 							<% task.users.each do |user| %>
-							<%= user.name %>
+								<%= user.name %> 
 							<% end %>
+							</b>
+							<b style="text-align:center;"><%= truncate(task.name.capitalize , length:20) %></b> 
+						    <b id="task<%=task.id%>">
+                             <%= task.start_time.strftime("%H:%M") %> - <%= task.end_time.strftime("%H:%M") %>
+
 						</div>
 					<% end %>
 				<% end %>
 			</div>
-			<div class="col-md-2">
-				<a href="/tasks/new" class="btn btn-primary btn-lg" data-remote=true id="new"><span class="glyphicon glyphicon-plus">
-				</span> Nouvelle Tache</a>
-				<div id="task-form"></div>
-			</div>
-			<hr>
+			<script>
+              
+               width = $("#slider").outerHeight();
+
+               $("#slider").css("max-height","500px");
+
+                $("#slider").mouseover(function(){ 
+                	$(this).css("max-height",""+width+"px")
+                });
+
+				 $("#slider").mouseout(function(){ 
+                	$(this).css("max-height","500px");
+                });
+
+
+
+			   function changeName(button){
+			   	button = $(button);
+                  if(button.html() == "Afficher"){
+                  	button.html("Cacher");
+                  }else{
+					button.html("Afficher");
+                  }
+
+			   }
+				function display_all_info(div){
+
+					
+
+				}
+
+				 function hide_all_info(div){
+
+					
+
+				}
+
+				function edit_task(){
+
+				}
+
+			</script>

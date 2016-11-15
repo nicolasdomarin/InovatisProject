@@ -4,12 +4,8 @@
  <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">
-       <% if current_user.is_reseller?%> 
-       Personnes Enregistrées
-       <% else %> 
-       Revendeurs Enregistrées 
-       <% end %> 
-       </div>
+      Personnes Enregistrées
+    </div>
 
     <!-- Table -->
     <table class="table">
@@ -22,7 +18,7 @@
       <tbody>
       <% @users.each_with_index do |user, index| %>
           <tr >
-            <td><%= get_name(user) %></td>
+            <td><%= user.name %></td>
             <td>
              <span class="btn btn-success btn-xs start-conversation" data-sid ="<%=current_user.id %>" data-rip="<%=user.id %>">Envoyer un message</span>
             </td>
